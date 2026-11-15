@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>A verse for you · FaithFocus</title>
+  <meta name="description" content="A friend shared a Bible verse with you. Read it here, then open it in FaithFocus, the free Bible app that helps you put your phone down and spend time with God.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0B1423">
+  <!-- Safari's Smart App Banner. verse.js adds app-argument=faithfocus://bible/BOOK/CH/VS while the head loads. -->
+  <meta name="apple-itunes-app" content="app-id=6830991960">
+
+  <!-- Open Graph / Twitter. SITE BASE URL: https://faithfocusapp.github.io (see README.md to change it).
+       Link previews are fetched without JavaScript, so these stay the same for every verse. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FaithFocus">
+  <meta property="og:title" content="A verse for you · FaithFocus">
+  <meta property="og:description" content="Tap to read it, then open it in FaithFocus, the free Bible app.">
+  <meta property="og:image" content="https://faithfocusapp.github.io/og/verse.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A verse for you, over an illustrated field of golden wheat">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="A verse for you · FaithFocus">
+  <meta name="twitter:description" content="Tap to read it, then open it in FaithFocus, the free Bible app.">
+  <meta name="twitter:image" content="https://faithfocusapp.github.io/og/verse.jpg">
+
+  <link rel="icon" type="image/png" href="../img/favicon-64.png">
+  <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script src="../assets/scenes.js"></script>
+  <script src="../assets/site.js"></script>
+  <script src="../assets/books.js"></script>
+  <script src="../assets/verse.js"></script>
+</head>
+<body>
+  <main class="stage scene" id="stage">
+    <a class="brand" id="brand" href="../" data-i18n-label="home" aria-label="FaithFocus home">
+      <img src="../img/icon-256.png" width="30" height="30" alt="">
+      <span>FaithFocus</span>
+    </a>
+
+    <div class="verse-wrap">
+      <p class="verse-eyebrow rise" data-i18n="verseFor">A verse for you</p>
+
+      <p class="loading" id="loading" role="status" data-i18n="loading">Loading the verse…</p>
+
+      <figure class="verse rise rise-2" id="verse" hidden>
+        <blockquote id="verse-text"></blockquote>
+        <figcaption>
+          <cite class="ref" id="verse-ref"></cite>
+          <span class="edition" id="verse-edition"></span>
+        </figcaption>
+      </figure>
+
+      <div class="error" id="error" hidden>
+        <h1 data-i18n="errTitle">This verse didn’t come through</h1>
+        <p data-i18n="errBody">The link may be incomplete. You can read this verse, and the whole Bible, for free in FaithFocus.</p>
+      </div>
+
+      <div class="actions rise rise-3" id="actions">
+        <a class="btn btn-gold" data-store href="https://apps.apple.com/app/id6830991960">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          <span data-i18n="getFree">Get FaithFocus free</span>
+        </a>
+        <a class="btn btn-ghost btn-small" id="open-app" href="faithfocus://bible" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10.5 5 8 4.5 4 4.5v14c4 0 6.5.5 8 2 1.5-1.5 4-2 8-2v-14c-4 0-6.5.5-8 2z"/><path d="M12 6.5v14"/></svg>
+          <span data-i18n="openApp">Open in FaithFocus</span>
+        </a>
+      </div>
+
+      <div class="tools" id="tools" hidden>
+        <button type="button" class="btn btn-ghost btn-small" id="copy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          <span id="copy-label" data-i18n="copy">Copy</span>
+        </button>
+        <button type="button" class="btn btn-ghost btn-small" id="share" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13"/><path d="m7 8 5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>
+          <span data-i18n="share">Share</span>
+        </button>
+        <button type="button" class="btn btn-ghost btn-small" id="chapter-toggle" aria-expanded="false" aria-controls="chapter">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h10"/></svg>
+          <span id="chapter-label" data-i18n="readChapter">Read the whole chapter</span>
+        </button>
+      </div>
+
+      <p class="app-note" data-i18n="tagline">The free Bible app that helps you put your phone down and spend time with God</p>
+      <p class="sr-only" id="announce" aria-live="polite"></p>
+    </div>
+  </main>
+
+  <section class="chapter" id="chapter" aria-labelledby="chapter-title" hidden>
+    <div class="wrap">
+      <h2 id="chapter-title"></h2>
+      <ol id="chapter-verses"></ol>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <nav aria-label="Links">
+      <a href="../" data-i18n="home">FaithFocus home</a>
+      <a href="https://oyftrluhldbqgrnkiwgt.supabase.co/functions/v1/pages/privacy" rel="noopener" data-i18n="privacy">Privacy</a>
+    </nav>
+    <p data-i18n="footerPromise">No ads. No tracking. No cookies.</p>
+    <p data-i18n="credit">Scripture: World English Bible and Louis Segond 1910, both in the public domain.</p>
+  </footer>
+</body>
+</html>

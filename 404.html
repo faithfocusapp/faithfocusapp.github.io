@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Page not found · FaithFocus</title>
+  <meta name="robots" content="noindex">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0B1423">
+  <!-- GitHub Pages serves this file at any missing address, so every link here is absolute.
+       SITE BASE URL: https://faithfocusapp.github.io (see README.md to change it). -->
+  <link rel="icon" type="image/png" href="https://faithfocusapp.github.io/img/favicon-64.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      min-height: 100vh; min-height: 100svh;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      padding: 32px 20px;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #F1EBDD;
+      background-color: #0B1423;
+      background-image:
+        linear-gradient(180deg, rgba(11, 20, 35, 0.35), rgba(11, 20, 35, 0.85)),
+        url("https://faithfocusapp.github.io/scenes/foggyDawn.jpg");
+      background-size: cover; background-position: center;
+    }
+    @media (min-aspect-ratio: 1/1) {
+      body {
+        background-image:
+          linear-gradient(180deg, rgba(11, 20, 35, 0.35), rgba(11, 20, 35, 0.85)),
+          url("https://faithfocusapp.github.io/scenes/wide/foggyDawn.jpg");
+      }
+    }
+    main { max-width: 440px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    img { width: 88px; height: 88px; border-radius: 20px; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4); }
+    h1 { font-family: "Newsreader", "New York", Georgia, serif; font-weight: 600; font-size: clamp(2rem, 8vw, 2.8rem); line-height: 1.1; margin: 0; }
+    p { margin: 0; font-size: 1.05rem; line-height: 1.5; color: rgba(241, 235, 221, 0.9); }
+    a.btn {
+      display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 12px 24px; margin-top: 8px;
+      border-radius: 999px; background: #C4A46B; color: #0B1423; font-weight: 600; text-decoration: none;
+    }
+    a.btn:focus-visible { outline: 3px solid #F1EBDD; outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="https://faithfocusapp.github.io/img/icon-256.png" width="88" height="88" alt="">
+    <h1 id="t">This page wandered off</h1>
+    <p id="b">The link may be old or mistyped. Let’s get you back home.</p>
+    <a class="btn" id="h" href="https://faithfocusapp.github.io/">Back to FaithFocus</a>
+  </main>
+  <script>
+    (function () {
+      var lang = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+      if (!/^fr\b/i.test(lang)) return;
+      document.documentElement.lang = "fr";
+      document.title = "Page introuvable · FaithFocus";
+      document.getElementById("t").textContent = "Cette page s’est égarée";
+      document.getElementById("b").textContent = "Le lien est peut-être ancien ou mal saisi. Revenons à l’accueil.";
+      document.getElementById("h").textContent = "Retour à FaithFocus";
+    })();
+  </script>
+</body>
+</html>
